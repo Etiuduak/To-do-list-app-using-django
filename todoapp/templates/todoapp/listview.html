@@ -1,0 +1,21 @@
+{% extends 'todoapp/base.html' %}
+
+{% block contents %}
+
+    {% for item in lists %}
+
+        <div class="border d-flex mt-4 mb-4 ms-4 w-50 ps-4" 
+        role="button" 
+        onclick="location.href='{% url "taskview" item.id %}'">
+                <h1 class="ps-2">{{item.title}}</h1>
+        </div>
+
+    {% empty %}
+    
+        <h1>You have no lists.</h1>
+
+    {% endfor %}
+    <button class="btn btn-outline-primary ms-4 mb-4"
+    onclick="location.href='{% url 'addlist' %}'">New List</button>
+
+{% endblock %}

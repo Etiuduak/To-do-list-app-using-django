@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO APP</title>
+    <link rel="stylesheet" href="{% static 'todoapp/css/bootstrap.min.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-md">
+        <img src="{% static 'todoapp/images/todolist.png' %}" 
+        alt="todoapp logo" 
+        class="navbar-brand w-50 h-25 d-flex ms-4" 
+        role="button"
+        onclick="location.href='{% url 'listview' %}'">
+    </nav>
+
+    {% if messages %}
+                {% for  message in messages %}
+                    <div class="alert alert-success alert-dismissible w-50">
+                            {{ message }}
+                            <button class="btn btn-outline-danger close" data-bs-dismiss="alert">x</button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+    {% block contents %}
+
+    {% endblock %}
+
+    <footer class="ms-4">Your handy to-do app</footer>
+
+    <script src="{% static 'todoapp/js/jquery-3.5.1.min.js' %}"></script>
+    <script src="{% static 'todoapp/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

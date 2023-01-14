@@ -1,0 +1,19 @@
+{% extends 'todoapp/base.html' %}
+
+{% block contents %}
+
+<div class="card w-50 mx-auto mt-5 mb-5">
+    <div class="card-header">
+        <h2 class="border-bottom card-title text-center">{{details.task}}</h2>
+        <p  class="text-center"><small>Created - {{details.datecreated}}   |&nbsp;&nbsp;| Due - {{details.datedue}}</small></p>
+    </div>
+    <div class="card-body">
+        <p class="lead card-text">{{details.description}}</p>
+    </div>
+    <div class="card-footer text-center">
+        <a role="button" href="{% url 'updatetask' details.id %}" class="btn btn-primary ms-2">Update</a>
+        <a role="button" href="{% url 'deletetask' details.id %}" class="btn btn-danger ms-2">Delete</a>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'todoapp/base.html' %}
+
+{% block contents %}
+
+    {% for taskstodo in tasks %}
+
+        <div class="container border mt-4 mb-4 ms-4 w-50 ps-4" 
+        role="button">
+                <h1>{{taskstodo.task}}</h1>
+            <p>
+                Created - {{taskstodo.datecreated}} <br>
+                Due - {{taskstodo.datedue}}
+            </p>
+            <a role="button" href="{% url 'moredetails' taskstodo.id %}" class="btn btn-warning">Details</a>
+            <a role="button" href="{% url 'deletetask' taskstodo.id %}" class="btn btn-danger ms-2">Delete</a>
+        </div>
+
+    {% empty %}
+    
+        <h1 class="ms-4 mt-2 mb-4">You have no tasks.</h1>
+
+    {% endfor %}
+    <button class="btn btn-outline-primary ms-4 mb-4"
+    onclick="location.href='{% url 'addtask' %}'">New Task</button>
+
+{% endblock %}

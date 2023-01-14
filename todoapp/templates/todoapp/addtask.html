@@ -1,0 +1,16 @@
+{% extends 'todoapp/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block contents %}
+
+    <form method="post" class="ms-4 w-50" enctype="multipart/form-data">
+        <h2 class="ms-4 mt-2 mb-4">Add new task</h2>
+        {% csrf_token %}
+        {{addtaskform|crispy}}
+        <button class="btn btn-outline-primary ms-4 mb-4">Add task</button>
+        <button class="btn btn-danger ms-4 mb-4" 
+        onclick="location.href='{% url 'listview' %}'">Cancel</button>
+    </form>
+    
+
+{% endblock %}
